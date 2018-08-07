@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Elizabeth Anatskaya](https://up.htmlacademy.ru/ecmascript/6/user/122950).
-* Наставник: `Неизвестно`.
+* Наставник: [no].
 
 ---
 
