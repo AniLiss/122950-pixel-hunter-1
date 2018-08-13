@@ -26,32 +26,42 @@ const arrowsHtml = parseHTML(`<div class="arrows__wrap">
 </div>`);
 document.body.appendChild(arrowsHtml);
 
-const arrowsWrapper = document.querySelectorAll(`.arrows__wrap`);
+const arrowsWrapper = document.querySelector(`.arrows__wrap`);
 const arrows = document.querySelectorAll(`.arrows__btn`);
 
 let templateIndex = 0;
 
-const showScreenByNum = (num) => {
+const initSwitchHandlers = () => {
+  document.addEventListener(`keyup`, handleKeyboardArrow);
+  arrowsWrapper.addEventListener(`click`, handleClickArrow);
+};
+
+const showScreenByNum = (index) => {
+  if (templateIndex < 0) {
+    return (templateIndex = 0);
+  } else if (templateIndex > screens.length - 1) {
+    return (templateIndex = screens.length - 1);
+  }
   main.innerHTML = ``;
-  main.appendChild(screens[num].content.cloneNode(true));
+  main.appendChild(screens[index].content.cloneNode(true));
+  return (templateIndex = index);
 };
 
-const switchScreen = (num) => {
-  showScreenByNum(num);
-  document.addEventListener(`keyup`, (e) => {
-    if (e.which === 37 && num !== 0) {
-      showScreenByNum(--num);
-    } else if (e.which === 39 && num !== screens.length - 1) {
-      showScreenByNum(++num);
-    }
-  });
-  arrowsWrapper[0].addEventListener(`click`, (e) => {
-    if (e.target === arrows[0] && num !== 0) {
-      showScreenByNum(--num);
-    } else if (e.target === arrows[1] && num !== screens.length - 1) {
-      showScreenByNum(++num);
-    }
-  });
+const handleKeyboardArrow = (e) => {
+  if (e.which === 37) {
+    showScreenByNum(--templateIndex);
+  } else if (e.which === 39) {
+    showScreenByNum(++templateIndex);
+  }
 };
 
-switchScreen(templateIndex);
+const handleClickArrow = (e) => {
+  if (e.target === arrows[0]) {
+    showScreenByNum(--templateIndex);
+  } else if (e.target === arrows[1]) {
+    showScreenByNum(++templateIndex);
+  }
+};
+
+showScreenByNum(templateIndex);
+initSwitchHandlers();
