@@ -1,4 +1,4 @@
-import {parseHTML, showScreenByNum} from './utils';
+import {parseHTML, showScreenByNum, ifChecked} from './utils';
 import {game2} from './game-2';
 import {greeting} from './greeting';
 
@@ -68,8 +68,10 @@ backBtn.addEventListener(`click`, () => {
 
 options.forEach((answerBox) => {
   answerBox.addEventListener(`click`, () => {
-    if (firstAnswers.some((input) => input.checked) && secondAnswers.some((input) => input.checked)) {
+    if (ifChecked(firstAnswers) && ifChecked(secondAnswers)) {
       showScreenByNum(game2);
     }
   });
 });
+
+

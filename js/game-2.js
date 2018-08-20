@@ -1,4 +1,4 @@
-import {parseHTML, showScreenByNum} from './utils';
+import {parseHTML, showScreenByNum, ifChecked} from './utils';
 import {game3} from './game-3';
 import {greeting} from './greeting';
 
@@ -57,7 +57,7 @@ backBtn.addEventListener(`click`, () => {
 });
 
 option.addEventListener(`click`, () => {
-  if (answers.some((input) => input.checked)) {
+  if (ifChecked(answers)) {
     showScreenByNum(game3);
   }
 });

@@ -47,23 +47,13 @@ export const game3 = parseHTML(`<header class="header">
   </section>`);
 
 const backBtn = game3.querySelector(`.back`);
+const options = game3.querySelector(`.game__content`);
+const answers = options.querySelectorAll(`.game__option`);
 
 backBtn.addEventListener(`click`, () => {
   showScreenByNum(greeting);
 });
 
-// Solution 1
-// const options = game3.querySelector(`.game__content`);
-// const answers = options.querySelectorAll(`.game__option`);
-// answers.forEach((i) => i.addEventListener(`click`, () => {
-//   showScreenByNum(stats);
-// }));
-
-// Solution 2
-const options = game3.querySelector(`.game__content`);
-
-options.addEventListener(`click`, (e) => {
-  if (e.target.parentNode.classList.contains(`game__option`)) {
-    showScreenByNum(stats);
-  }
-});
+answers.forEach((i) => i.addEventListener(`click`, () => {
+  showScreenByNum(stats);
+}));

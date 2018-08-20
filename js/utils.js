@@ -10,3 +10,7 @@ export const showScreenByNum = (template) => {
   main.innerHTML = ``;
   main.appendChild(template);
 };
+
+export const ifChecked = (array) => {
+  return array.some((input) => input.checked);
+};
