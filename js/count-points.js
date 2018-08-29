@@ -1,3 +1,4 @@
+import {INITIAL_GAME} from './initial-data';
 const POINTS_MAP = {
   rightAnswer: 100,
   fastAnswer: 50,
@@ -14,7 +15,7 @@ export const countPoints = (answers, lives) => {
 
   let gamePoints = 0;
 
-  if (answers.length < 10) {
+  if (answers.length < INITIAL_GAME.amountOfQuestion) {
     return -1;
   }
 
